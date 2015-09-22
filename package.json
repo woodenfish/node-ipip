@@ -10,6 +10,9 @@
     "email": "chichou@ujs.edu.cn",
     "url": "http://chichou.0ginr.com/"
   },
+  "bin": {
+     "ipip": "./cli.js"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/ChiChou/node-ipip.git"
