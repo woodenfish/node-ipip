@@ -10,7 +10,9 @@ Install the module:
 
     npm install ipip
 
-[Database](http://s.qdcdn.com/17mon/17monipdb.zip) is provided by ipip.net. The free version will be downloaded automatically.
+[Database](http://s.qdcdn.com/17mon/17monipdb.zip) is provided by ipip.net.
+
+You can download the `17monip.dat` and manually put it the library directory, or simply use `npm run installdb` to download it.
 
     var ipip = require('ipip');
     var ip = new ipip.IPIP();
@@ -21,7 +23,7 @@ Install the module:
 If you are a paid user, you can assign an alternative database file path.
 
     var ipip = require('ipip');
-    var ip = new ipip.IPIP('/path/to/your/datafile');
+    var ip = new ipip.IPIP('/path/to/your/17monip.datx');
 
 ## Documentation
 
@@ -52,9 +54,22 @@ Otherwise, it returns an array as following format: `['country', 'province', 'ci
 
 For paid users (data file should have the "datx" extension), there are more fields: `['isp', 'latitude', 'longitude', 'timezone', 'timezone2', 'governcode']`
 
-## Pro Tip
+## Command line util
 
-Loading the database to memory uses sync IO, which blocks.
+If installed globally, you can use `ipip` command in your shell to query IP information.
+
+    ➜  ~ ipip 8.8.8.8 202.195.161.30
+    Information for 8.8.8.8:
+    country: GOOGLE
+    province: GOOGLE
+    city: N/A
+    organization: N/A
+    
+    Information for 202.195.161.30:
+    country: 中国
+    province: 江苏
+    city: 镇江
+    organization: 江苏大学
 
 ## Contributing
 

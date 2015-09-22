@@ -10,7 +10,7 @@
 
     npm install ipip
 
-[IP 地址库](http://s.qdcdn.com/17mon/17monipdb.dat) 由 17mon 提供，在 `npm install` 过程中将自动下载。
+[IP 地址库](http://s.qdcdn.com/17mon/17monipdb.dat) 由 17mon 提供，您可以手动下载最新的文件到库所在目录，也可以在库所在目录直接使用 `npm run installdb`命令下载安装。
 
 代码示例
 
@@ -50,9 +50,22 @@ IPIP.ip(ip [, format])
       organization: '组织' 
     }
 
-## 提示
+## 命令行小工具
 
-程序在初始化过程使用阻塞方法加载数据库到内存。
+安装位全局模块之后，可以在命令行中使用 `ipip` 快速查询 IP 信息：
+
+    ➜  ~ ipip 8.8.8.8 202.195.161.30
+    Information for 8.8.8.8:
+    country: GOOGLE
+    province: GOOGLE
+    city: N/A
+    organization: N/A
+    
+    Information for 202.195.161.30:
+    country: 中国
+    province: 江苏
+    city: 镇江
+    organization: 江苏大学
 
 ## 授权
 
