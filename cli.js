@@ -21,10 +21,6 @@ process.argv.slice(2).forEach(function(e) {
     log(ip.ip(e));
     console.log('');
   } else {
-    ip.domain(e, function(err, result) {
-      console.log('Information for ' + e + ':');
-      log(result);
-    });
-    console.log('');
+    console.error('Invalid ip: ' + e);
   }
 });
