@@ -5,16 +5,6 @@ var expect = require('chai').expect,
   ipip = rewire('../lib/ipip.js'),
   IPIP = ipip.IPIP;
 
-var dnsMock = {
-  resolve4: function(domain, callback) {
-    if (domain === 'this.domain.does.not.exist') {
-      callback(new Error('queryA ENOTFOUND'));
-    } else {
-      callback(null, ['8.8.8.8']);
-    }
-  }
-};
-
 describe('IPIP', function() {
   var ip = new ipip.IPIP();
 
@@ -31,14 +21,6 @@ describe('IPIP', function() {
       ip.ip('8.8.4.4', 'invalid-format');
     }).to.throw(Error);
 
-    expect(function() {
-      ip.domain('8.8.4.4', 0);
-    }).to.throw(Error);
-
-    expect(function() {
-      ip.domain.apply(ip, new Array(4));
-    }).to.throw(Error);
-
     done();
   });
 
@@ -46,33 +28,12 @@ describe('IPIP', function() {
     expect(ip.ip(0x040404)).to.have.a.property('city');
   });
 
-  it('should return a dictionary', function(done) {
+  it('should return a dictionary', function() {
     expect(ip.ip('202.195.161.30', 'dict')).to.have.a.property('city');
-    done();
   });
 
-  it('should fetch IP information for a domain', function(done) {
-    ipip.__set__('dns', dnsMock);
-
-    ip.domain('baidu.com', 'array').then(function(result) {
-      expect(result).to.be.an.aray; 
-      ip.domain('ujs.edu.cn').then(function(result) {
-        expect(result).ok;
-        ip.domain('this.domain.does.not.exist', function(err, result) {
-          expect(err).ok;
-          done();
-        });
-      });
-    });
-  });
-
-  it('should return an array', function(done) {
+  it('should return an array', function() {
     expect(ip.ip('8.8.8.8')).to.be.an.aray;
-
-    ip.domain('qq.com', 'array', function(err, result) {
-      expect(result).to.be.an('array');
-      done();
-    });
   });
 
 });
