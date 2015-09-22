@@ -4,14 +4,13 @@
 
 A Node.js module to query geolocation information for an IP or domain, based on database by [ipip.net](http://ipip.net).
 
-
 ## Getting Started
 
 Install the module:
 
     npm install ipip
 
-[Database](http://s.qdcdn.com/17mon/17monipdb.zip) is provided by ipip.net. It will be downloaded automatically, no extra operations needed.
+[Database](http://s.qdcdn.com/17mon/17monipdb.zip) is provided by ipip.net. The free version will be downloaded automatically.
 
     var ipip = require('ipip');
     var ip = new ipip.IPIP();
@@ -19,14 +18,14 @@ Install the module:
     // lookup an ip
     console.log(ip.ip('202.195.161.30', 'dict'));
 
-    // domain queries must be asynchronous
-    ip.domain('ujs.edu.cn', 'dict', function(result) {
-      console.log(result);
-    });
+If you are a paid user, you can assign an alternative database file path.
+
+    var ipip = require('ipip');
+    var ip = new ipip.IPIP('/path/to/your/datafile');
 
 ## Documentation
 
-### Query by IP
+### Query
 
 query(ip [, format])
 
@@ -37,6 +36,8 @@ IP address that you want to query. e.g. `8.8.8.8`
 **format** 
 
 Format of the information, shoule be `array` or `dict`. 
+
+By default it will use the free version.
 
 When set to `dict` you'll get an object that consists of four keys: `country`, `province`, `city`, `organization`. e.g.:
 
@@ -49,31 +50,11 @@ When set to `dict` you'll get an object that consists of four keys: `country`, `
 
 Otherwise, it returns an array as following format: `['country', 'province', 'city', 'organization']`.
 
-### Query by domain name
+For paid users (data file should have the "datx" extension), there are more fields: `['isp', 'latitude', 'longitude', 'timezone', 'timezone2', 'governcode']`
 
-domain(domain [, format], callback)
+## Pro Tip
 
-Due to dns query, this function must be asynchronous.
-
-**domain**
-
-Domain name that you want to query. e.g. `google.com`
-
-**format** 
-
-The same as `ip`. 
-
-**callback**
-
-Fires when result found. Should be declared as: `callback(err, result)`
-
-## Promise support
-
-Without `callback` parameter you can use another favor of async programming, the `Promise`. It's highly recommended.
-
-    ip.domain('google.com').then(function(result) {
-      // do the stuff
-    });
+Loading the database to memory uses sync IO, which blocks.
 
 ## Contributing
 

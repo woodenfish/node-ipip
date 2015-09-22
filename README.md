@@ -16,17 +16,9 @@
 
     var ipip = require('ipip').IPIP;
     var ip = new IPIP();
-    // ...
     
     // 查询 IP 信息，以字典格式返回
     console.log(ip.ip('202.195.161.30'));
-
-    // 域名的接口必须使用异步调用
-    ip.domain('ujs.edu.cn').then(function(result) {
-      console.log(result);
-    }).catch(function(err) {
-      // error occured
-    });
 
 ## 文档
 
@@ -42,7 +34,8 @@ IPIP.ip(ip [, format])
 
 制定返回数据的格式，可设置为 `array` 或者 `dict`。 
 
-对于免费版（dat 格式）数据，包含国家、省份、城市、组织。收费版包含国家、省份、城市、组织、运营商、精度、纬度、时区、行政区域代码。
+* 免费版（dat 格式）数据包含国家、省份、城市、组织；
+* 收费版包含国家、省份、城市、组织、运营商、经度、纬度、时区、行政区域代码。
 
 设为 `array`（缺省）时返回格式如下：
     
@@ -57,50 +50,9 @@ IPIP.ip(ip [, format])
       organization: '组织' 
     }
 
-### 查询域名
-
-IPIP.domain(domain [, format], callback)
-
-由于需要查询 DNS，本函数只能通过异步调用。
-
-**domain**
-
-域名，如 `google.com`
-
-**format** 
-
-同上。
-
-**callback**
-
-处理结果的回调函数，只接受一个参数，格式之前的 `format` 参数决定。
-
-## 示例
-
-    ip.domain('ujs.edu.cn', function(result) {
-      /*
-      yields:
-      {
-        country: '中国',
-        province: '江苏',
-        city: '镇江',
-        organization: '江苏大学' 
-      }
-      */
-    });
-
-
-## Promise 用法
-
-对于 domain方法，在 node 引擎支持 Promise 的环境中，省略 `callback` 参数即可返回一个 Promise 对象。
-
-    ip.domain('baidu.com').then(function() {
-      // do the stuff
-    });
-
 ## 提示
 
-程序在初始化过程中会一次性加载数据库到内存，消耗一定 RAM 并阻塞线程。请注意管理模块实例以免发生内存泄露。
+程序在初始化过程使用阻塞方法加载数据库到内存。
 
 ## 授权
 
