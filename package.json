@@ -1,6 +1,6 @@
 {
   "name": "ipip",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "main": "lib/ipip.js",
   "description": "Query geolocation information from IP",
   "homepage": "http://tool.17mon.cn",
@@ -23,7 +23,7 @@
     "cli.js"
   ],
   "scripts": {
-    "installdb": "wget http://s.qdcdn.com/17mon/17monipdb.zip&&unzip -p 17monipdb.zip 17monipdb.dat>17monipdb.dat",
+    "preinstall": "wget http://s.qdcdn.com/17mon/17monipdb.zip&&unzip -p 17monipdb.zip 17monipdb.dat>17monipdb.dat",
     "test": "make test-all"
   },
   "keywords": ["ip", "isp", "geolocation", "lookup"],
