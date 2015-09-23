@@ -33,7 +33,7 @@ describe('IPIP', function() {
   });
 
   it('should return an array', function() {
-    expect(ip.ip('8.8.8.8')).to.be.an.aray;
+    expect(ip.ip('8.8.8.8', 'array')).to.be.an.aray;
   });
 
 });
