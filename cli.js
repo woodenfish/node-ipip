@@ -2,8 +2,7 @@
 
 var fs = require('fs');
 var net = require('net');
-var IPIP = require('ipip').IPIP;
-var ip = new IPIP();
+var ip = require('ipip')();
 
 var log = function(result) {
   for (var key in result)
@@ -18,7 +17,7 @@ if (process.argv.length < 3) {
 process.argv.slice(2).forEach(function(e) {
   if (net.isIPv4(e)) {
     console.log('Information for ' + e + ':');
-    log(ip.ip(e));
+    log(ip(e));
     console.log('');
   } else {
     console.error('Invalid ip: ' + e);

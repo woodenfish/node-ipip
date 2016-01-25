@@ -10,25 +10,42 @@
 
     npm install ipip
 
-[IP 地址库](http://s.qdcdn.com/17mon/17monipdb.dat) 由 17mon 提供，您可以手动下载最新的文件到库所在目录，也可以在库所在目录直接使用 `npm run installdb`命令下载安装。
+[IP 地址库](http://s.qdcdn.com/17mon/17monipdb.dat) 由 ipip.net（原 17mon） 提供，您可以手动下载最新的文件到库所在目录，也可以在库所在目录直接使用 `npm run installdb`命令下载安装。
 
 代码示例
 
-    var IPIP = require('ipip').IPIP;
-    var ip = new IPIP();
+    var ipInfo = require('ipip')();
     
     // 查询 IP 信息，以字典格式返回
-    console.log(ip.ip('202.195.161.30'));
+    console.log(ipInfo('202.195.161.30'));
 
 ## 文档
 
+### 加载数据库
+
+require('ipip')([database])
+
+加载 database 指向的数据库，支持 dat 和 datx 格式。默认为免费版的 17monipdb.dat。
+
+例：
+
+    require('ipip')('/path/to/your/database.datx')
+    require('ipip')({data: '/path/to/file', version: 'datx'})
+
+**注意**：加载数据库是一个阻塞调用。
+
 ### 查 IP
 
-IPIP.ip(ip [, format])
+ip(ip [, format])
 
 **ip**
 
 待查询的 IP 地址，如 `8.8.8.8`
+
+例：
+
+    var ip = require('ipip')();
+    console.log(ip('8.8.8.8'));
 
 **format** 
 
@@ -36,6 +53,10 @@ IPIP.ip(ip [, format])
 
 * 免费版（dat 格式）数据包含国家、省份、城市；
 * 收费版包含国家、省份、城市、组织、运营商、经度、纬度、时区、行政区域代码。
+
+例：
+
+    console.log(ip('8.8.8.8', ip.FORMAT_DICT));
 
 设为 `array`（缺省）时返回格式如下：
     

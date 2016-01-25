@@ -10,26 +10,28 @@ Install the module:
 
     npm install ipip
 
-[Database](http://s.qdcdn.com/17mon/17monipdb.zip) is provided by ipip.net.
-
-You can download the `17monip.dat` and manually put it the library directory, or simply use `npm run installdb` to download it.
-
-    var IPIP = require('ipip').IPIP;
-    var ip = new IPIP();
-
-    // lookup an ip
-    console.log(ip.ip('202.195.161.30', 'dict'));
-
-If you are a paid user, you can assign an alternative database file path.
-
-    var ipip = require('ipip');
-    var ip = new ipip.IPIP('/path/to/your/17monip.datx');
+[Database](http://s.qdcdn.com/17mon/17monipdb.zip) is provided by ipip.net and it will be automatically downloaded during installation.
 
 ## Documentation
 
+### Load database
+
+Since v2.0, the module itself is a loader function. Just pass the path to load a paid database file, or simply leaving it blank to use default free data.
+
+    var ip = require('ipip')();
+
+    // lookup an ip
+    console.log(ip('202.195.161.30'));
+
+Use an alternative database file path for paid data:
+
+    var ip = require('ipip')('/path/to/your/17monip.datx');
+
+**NOTE** Loading database is a synchronized function.
+
 ### Query
 
-query(ip [, format])
+ip(ip [, format])
 
 **ip**
 
@@ -74,4 +76,4 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## License
 
-(C) Copyright 2015 ChiChou. Licensed under the MIT license.
+(C) Copyright 2016 ChiChou. Licensed under the MIT license.
