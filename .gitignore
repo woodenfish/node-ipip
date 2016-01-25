@@ -3,4 +3,5 @@
 17monipdb.datx
 coverage/
 *.log
+*.zip
 .coveralls.yml

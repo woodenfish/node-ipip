@@ -1,6 +1,6 @@
 {
   "name": "ipip",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "main": "lib/ipip.js",
   "description": "Query geolocation information from IP",
   "homepage": "http://tool.17mon.cn",
@@ -11,7 +11,7 @@
     "url": "http://chichou.0ginr.com/"
   },
   "bin": {
-     "ipip": "./cli.js"
+    "ipip": "./cli.js"
   },
   "repository": {
     "type": "git",
@@ -26,12 +26,16 @@
     "preinstall": "wget http://s.qdcdn.com/17mon/17monipdb.zip&&unzip -p 17monipdb.zip 17monipdb.dat>17monipdb.dat",
     "test": "make test-all"
   },
-  "keywords": ["ip", "isp", "geolocation", "lookup"],
+  "keywords": [
+    "ip",
+    "isp",
+    "geolocation",
+    "lookup"
+  ],
   "devDependencies": {
-    "chai": "^1.9.2",
-    "coveralls": "^2.11.2",
-    "istanbul": "^0.3.2",
-    "mocha": "^1.21.4",
-    "rewire": "^2.1.0"
+    "chai": "^3.4.1",
+    "coveralls": "^2.11.6",
+    "istanbul": "^0.4.2",
+    "mocha": "^2.3.4"
   }
 }

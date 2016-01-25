@@ -1,8 +1,7 @@
 'use strict';
 
 var expect = require('chai').expect,
-  rewire = require('rewire'),
-  ipip = rewire('../lib/ipip.js'),
+  ipip = require('../lib/ipip.js'),
   IPIP = ipip.IPIP;
 
 describe('IPIP', function() {
