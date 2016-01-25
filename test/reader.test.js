@@ -13,7 +13,7 @@ describe('ip lookup', function() {
   it('should support dat format', function(done) {
     var record = dat.lookup(0xCAC3A11E);
     expect(record).to.be.an.aray;
-    expect(record).to.include.members(['中国', '江苏', '镇江', '江苏大学']);
+    expect(record).to.include.members(['中国', '江苏', '镇江']);
 
     var record2 = dat.lookup(0xC0A80101);
     expect(record2).to.include.members(['局域网', '']);
