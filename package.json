@@ -1,6 +1,6 @@
 {
   "name": "ipip",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "lib/ipip.js",
   "description": "Query geolocation information from IP",
   "homepage": "http://tool.17mon.cn",

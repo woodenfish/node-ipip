@@ -41,16 +41,15 @@ Format of the information, shoule be `array` or `dict`.
 
 By default it will use the free version.
 
-When set to `dict` you'll get an object that consists of four keys: `country`, `province`, `city`, `organization`. e.g.:
+When set to `dict` you'll get an object that consists of four keys: `country`, `province`, `city`. e.g.:
 
     {
       country: '中国',
       province: '江苏',
-      city: '镇江',
-      organization: '江苏大学' 
+      city: '镇江'
     }
 
-Otherwise, it returns an array as following format: `['country', 'province', 'city', 'organization']`.
+Otherwise, it returns an array as following format: `['country', 'province', 'city']`.
 
 For paid users (data file should have the "datx" extension), there are more fields: `['isp', 'latitude', 'longitude', 'timezone', 'timezone2', 'governcode']`
 
@@ -63,13 +62,11 @@ If installed globally, you can use `ipip` command in your shell to query IP info
     country: GOOGLE
     province: GOOGLE
     city: N/A
-    organization: N/A
     
     Information for 202.195.161.30:
     country: 中国
     province: 江苏
     city: 镇江
-    organization: 江苏大学
 
 ## Contributing
 
