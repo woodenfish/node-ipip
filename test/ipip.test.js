@@ -24,7 +24,7 @@ describe('IPIP', function() {
     done();
   });
 
-  it('shoudl accept numeric input', function() {
+  it('should accept numeric input', function() {
     expect(ip.ip(0x040404)).to.have.a.property('city');
   });
 
