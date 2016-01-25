@@ -14,8 +14,8 @@ Install the module:
 
 You can download the `17monip.dat` and manually put it the library directory, or simply use `npm run installdb` to download it.
 
-    var ipip = require('ipip');
-    var ip = new ipip.IPIP();
+    var IPIP = require('ipip').IPIP;
+    var ip = new IPIP();
 
     // lookup an ip
     console.log(ip.ip('202.195.161.30', 'dict'));

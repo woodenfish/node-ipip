@@ -14,7 +14,7 @@
 
 代码示例
 
-    var ipip = require('ipip').IPIP;
+    var IPIP = require('ipip').IPIP;
     var ip = new IPIP();
     
     // 查询 IP 信息，以字典格式返回
