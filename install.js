@@ -3,7 +3,7 @@
 var http = require('http')
 var fs = require('fs')
 var spawn = require('child_process').spawn
-var npm = require('npm')
+var path = require('path')
 
 var TMP = '17monipdb.zip',
   DB = '17monipdb.dat',
@@ -30,25 +30,6 @@ function unzip(callback) {
   })
 }
 
-function nodeUnzip(callback) {
-  var npm = require('npm');
-  npm.load(function(err) {
-    npm.commands.install(['unzip'], function(err, data) {
-      fs.createReadStream(TMP)
-        .pipe(require('unzip').Parse())
-        .on('entry', function(entry) {
-          if (entry.path === DB)
-            entry.pipe(fs.createWriteStream(DB)).on('finish', function() {
-              callback();
-            })
-          else
-            entry.autodrain()
-        })
-        .on('error', callback)
-    })
-  })
-}
-
 function success() {
   console.info('Database successfully installed')
   fs.unlink(TMP, process.exit)
@@ -61,15 +42,11 @@ download(function(err) {
 
   unzip(function(err) {
     if (err) {
-      console.warn('zip command not found, fallback to node-unzip')
-      return nodeUnzip(function(err) {
-        if (err)
-          return console.error('Unexpected error occured while extracting database')
-        else
-          success()
-      })
+      console.error('Unable to auto unzip database. \n' + 
+        'You have to manually copy the 17monipdb.dat to ' + 
+        path.join(__dirname, DB));
+      return;
     }
-
     success()
   })
 
