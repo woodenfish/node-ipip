@@ -10,7 +10,7 @@
 
     npm install ipip
 
-[IP 地址库](http://s.qdcdn.com/17mon/17monipdb.dat) 由 ipip.net（原 17mon） 提供，您可以手动下载最新的文件到库所在目录，也可以在库所在目录直接使用 `npm run installdb`命令下载安装。
+[IP 地址库](http://s.qdcdn.com/17mon/17monipdb.dat) 由 ipip.net（原 17mon） 提供。在支持 wget 和 unzip 的系统上，将会在安装模块时自动下载解压。*Windows 用户需要手动安装数据库*。
 
 代码示例
 

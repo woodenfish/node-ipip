@@ -10,7 +10,7 @@ Install the module:
 
     npm install ipip
 
-[Database](http://s.qdcdn.com/17mon/17monipdb.zip) is provided by ipip.net and it will be automatically downloaded during installation.
+[Database](http://s.qdcdn.com/17mon/17monipdb.zip) is provided by ipip.net. If `unzip` command is avaliable, the database will be automatically downloaded during installation. Otherwise, you'll have to manually extract the database, if you are using Windows.
 
 ## Documentation
 

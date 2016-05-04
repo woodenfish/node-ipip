@@ -13,7 +13,7 @@ var TMP = '17monipdb.zip',
 function download(callback) {
   http.get(URL, function(response) {
     response.pipe(fs.createWriteStream(TMP)).on('finish', function() {
-        console.info('Database Successfully downloaded.')
+        console.info('Database successfully downloaded.')
         callback()
       })
       .on('error', callback)
