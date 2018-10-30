@@ -24,7 +24,6 @@
     "install.js"
   ],
   "scripts": {
-    "postinstall": "node install.js",
     "test": "make test-all"
   },
   "keywords": [
